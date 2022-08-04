@@ -6,25 +6,25 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state={
-       textoDesafio: " ",
+       textoJogada: " ",
     };
     
-    this.definirDesafio = this.definirDesafio.bind(this);
+    this.definirJogada = this.definirJogada.bind(this);
 
    
 
-    this.listaDesafios= [
+    this.listaJogada= [
       'c',
       'a',
       'b',
       'b'            
 ]
 }
-    definirDesafio(){
-        let numeroAleatorio = Math.floor(Math.random() * this.listaDesafios.length);
+    definirJogada(){
+        let numeroAleatorio = Math.floor(Math.random() * this.listaJogada.length);
   
         this.setState({
-          textoDesafio: ' " ' + this.listaDesafios[numeroAleatorio] + '"',
+          textoJogada: ' " ' + this.listaJogada[numeroAleatorio] + '"',
         });      
       }
     
@@ -33,16 +33,16 @@ render(){
   return (
     <View style={styles.container}>
           <TouchableOpacity style={styles.botao}
-                          onPress={this.definirDesafio}>
+                          onPress={this.definirJogada}>
           <View style={styles.btnArea}>
             <Text style={styles.btnTexto}>
-              Definir Desafio
+              Definir Jogada
             </Text>
           </View>
         </TouchableOpacity>
 
 
-      <Text style={styles.textoDesafio}> {this.state.textoDesafio} </Text>
+      <Text style={styles.textoJogada}> {this.state.textoJogada} </Text>
     </View>
   );
  }
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  textoDesafio:{
+  textoJogada:{
     fontSize: 20,
     margin: 30,
     fontStyle: 'italic',
