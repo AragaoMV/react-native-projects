@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 //import Desafios from './src';
 
 class App extends Component{
@@ -8,11 +9,9 @@ class App extends Component{
     this.state={
        textoJogada: " ",
     };
-    
     this.definirJogada = this.definirJogada.bind(this);
-
+    this.abrirJogada = this.abrirJogada.bind(this);
    
-
     this.listaJogada= [
       'c',
       'a',
@@ -20,6 +19,7 @@ class App extends Component{
       'b'            
 ]
 }
+
     definirJogada(){
         let numeroAleatorio = Math.floor(Math.random() * this.listaJogada.length);
   
@@ -27,6 +27,10 @@ class App extends Component{
           textoJogada: ' " ' + this.listaJogada[numeroAleatorio] + '"',
         });      
       }
+
+      abrirJogada(){
+        alert(this.state.textoJogada)
+       };
     
 
 render(){
@@ -42,7 +46,15 @@ render(){
         </TouchableOpacity>
 
 
+    <View style={styles.abirJGD}>
+    <TouchableOpacity onPress={this.abrirJogada}>
+        <Feather name="clipboard" size={24} color="black" />
+        </TouchableOpacity>
+    </View>
+        
+        
       <Text style={styles.textoJogada}> {this.state.textoJogada} </Text>
+
     </View>
   );
  }
@@ -53,6 +65,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5C4CF',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  abirJGD:{
+    marginTop:30,
   },
   textoJogada:{
     fontSize: 20,
