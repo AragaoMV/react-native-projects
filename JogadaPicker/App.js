@@ -7,29 +7,33 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state={
-       textoJogada: " ",
+      listaJogada: [
+        { id: '1',
+          nomeJGD:'Nerdola',
+          descJGD:'Formação- Trips Alfa Depende do alinhamento do corner. Press- Fly, 5 Jardas - Post, Cushion - Slant (Linha) Bravo Comeback (release para fora) (linha) Charlie  Fake Run, entrada pelo gap 4 e rota out Echo  Post (release para dentro) Delta  Fly (Linha) (release para fora)'
+        },
+        { id:'2',
+          nomeJGD: 'Casa Própria',
+          descJGD: 'Formação: Shotgun Alfa: 10 in (75%) (release para dentro) (linha) Bravo: Post  (release para dentro) (linha) Charlie - Fake Run, pocket Delta - Corner (110%) (release para fora) Echo - Block - Flat'
+        },
+        
+        ]
     };
     this.definirJogada = this.definirJogada.bind(this);
     this.abrirJogada = this.abrirJogada.bind(this);
    
-    this.listaJogada= [
-      'c',
-      'a',
-      'b',
-      'b'            
-]
 }
 
     definirJogada(){
-        let numeroAleatorio = Math.floor(Math.random() * this.listaJogada.length);
+        let numeroAleatorio = Math.floor(Math.random() * this.state.listaJogada.length);
   
         this.setState({
-          textoJogada: ' " ' + this.listaJogada[numeroAleatorio] + '"',
+        listaJogada: ' " ' + this.state.listaJogada[numeroAleatorio] + '"',
         });      
       }
 
       abrirJogada(){
-        alert(this.state.textoJogada)
+        alert(this.state.listaJogada.descJGD)
        };
     
 
@@ -53,7 +57,7 @@ render(){
     </View>
         
         
-      <Text style={styles.textoJogada}> {this.state.textoJogada} </Text>
+      <Text style={styles.nomeJGD}> {this.state.listaJogada.nomeJGD} </Text>
 
     </View>
   );
