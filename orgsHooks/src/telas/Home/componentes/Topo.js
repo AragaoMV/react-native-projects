@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import logo from '../../../assets/logo.png';
-import { carregaTopo, carregaProtudores } from '../../../servicos/carregaDados';
+import { carregaTopo } from '../../../servicos/carregaDados';
 
 class Topo extends React.Component {
 
@@ -46,10 +46,12 @@ const estilos = StyleSheet.create({
         fontSize: 26,
         lineHeight: 42,
         fontWeight: "bold",
+        color: '#464646'
     },
     subtitulo: {
         fontSize: 16,
         lineHeight: 26,
+        color: '#a3a3a3'
     },
 
 });
