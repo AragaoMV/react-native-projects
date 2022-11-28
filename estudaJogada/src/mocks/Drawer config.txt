@@ -1,0 +1,13 @@
+//import 'react-native-gesture-handler';
+
+
+//import { createDrawerNavigator } from "@react-navigation/drawer";
+
+//import Conceitos from "../telas/Conceitos/conceitos";
+
+//        <Drawer.Navigator>
+//           <Drawer.Screen name="Home" component={HomePage} />
+//           <Drawer.Screen name="Conceitos" component={Conceitos} />
+//        </Drawer.Navigator> 
+
+//const Drawer = createDrawerNavigator();
