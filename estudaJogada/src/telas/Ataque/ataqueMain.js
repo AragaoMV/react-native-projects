@@ -1,6 +1,14 @@
 import React from "react";
-import { Text } from "react-native";
+import { SafeAreaView, StatusBar } from "react-native";
 
-export default function Ataque(){
-    return <Text>Ataque</Text>
+import Jogadas from "./componentes/Jogadas";
+import Topo from "./componentes/Topo";
+
+
+export default function Ataque({topo,jogadas}){
+    return <SafeAreaView>
+        <StatusBar/>
+        <Topo {...topo}/>
+        <Jogadas {...jogadas}/>
+    </SafeAreaView>
 };

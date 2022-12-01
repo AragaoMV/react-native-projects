@@ -1,8 +1,12 @@
 import React from "react";
 import { SafeAreaView, Text } from "react-native";
 
-export default function Home() {
+import Descricao from "./componentes/Descricao";
+import Topo from "./componentes/Topo";
+
+export default function Home ({topo, descricao}) {
     return <SafeAreaView>
-        <Text>Main Page</Text>
+        <Topo {...topo}/>
+        <Descricao {...descricao}/>
     </SafeAreaView>
 };
