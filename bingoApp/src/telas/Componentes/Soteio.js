@@ -2,10 +2,10 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 
-const numeroSorteio = [];
+
 
 export default function SorteiaNumero() {
-
+    const numeroSorteio = [];
     const geraSorteio = () => {
         let bola = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
         let existeBola = numeroSorteio.find(item => item === bola);
@@ -18,11 +18,10 @@ export default function SorteiaNumero() {
         console.log(numeroSorteio);
     }
 
-
     return <View>
         <Text style={styles.numero}> Numeros ja sorteados: </Text>
-        {numeroSorteio.map(()=>{
-            <Text style={styles.numero} >{numeroSorteio}</Text>
+        {numeroSorteio.map((key, item) => {
+            <Text key={key} style={styles.numero}>{item}</Text>
         })}
         <TouchableOpacity
             style={styles.botao}
@@ -35,8 +34,9 @@ export default function SorteiaNumero() {
 const styles = StyleSheet.create({
     numero: {
         color: "#FFFFFF",
-        textAlign: "center",
+        textAlign: "left",
         fontSize: "20",
+        padding: 15
     },
     botao: {
         backgroundColor: "#14fa55",
