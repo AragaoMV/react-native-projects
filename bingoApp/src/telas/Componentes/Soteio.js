@@ -7,13 +7,15 @@ export default function SorteiaNumero() {
 
     const [ultimaBola, setUltimaBola] = useState()
 
-    let bola = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
-    let existeBola = numeroSorteio.find(item => item === bola);
-    if (existeBola) {
-        Bingo(); // Tenta novamente
-        return;
-    }
+
     function Bingo() {
+        
+        let bola = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
+        let existeBola = numeroSorteio.find(item => item === bola);
+        if (existeBola) {
+            Bingo(); // Tenta novamente
+            return;
+        }
         numeroSorteio.push(bola);
         setUltimaBola(bola);
     }
