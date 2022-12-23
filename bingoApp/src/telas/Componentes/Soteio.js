@@ -9,8 +9,8 @@ export default function SorteiaNumero() {
 
 
     function Bingo() {
-        
-        let bola = Math.floor(Math.random() * (99 - 1 + 1)) + 1;
+
+        let bola = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
         let existeBola = numeroSorteio.find(item => item === bola);
         if (existeBola) {
             Bingo(); // Tenta novamente
@@ -20,51 +20,59 @@ export default function SorteiaNumero() {
         setUltimaBola(bola);
     }
 
+
     const filtered = numeroSorteio.filter((item, index) => numeroSorteio.indexOf(item) === index);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.numero}> {ultimaBola} </Text>
-            <TouchableOpacity
-                style={styles.botaoSorteio}
-                onPress={Bingo}
-            >
-                <Text style={styles.btnText}>Sortear</Text>
-            </TouchableOpacity>
+            <Text style={styles.texto}> Ultimo número sorteado:</Text>
+            <Text style={styles.numero}>{ultimaBola}</Text>
 
-            <TouchableOpacity
-                style={styles.botaoResultado}
-                onPress={() => { alert(filtered) }}>
-                <Text style={styles.btnText}>Lista de Sorteados</Text>
-            </TouchableOpacity>
+            <View style={styles.botoes}>
+                <TouchableOpacity
+                    style={styles.botaoSorteio}
+                    onPress={Bingo}
+                >
+                    <Text style={styles.btnText}>Sortear</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.botaoResultado}
+                    onPress={() => { alert(filtered) }}>
+                    <Text style={styles.btnText}>Resultado</Text>
+                </TouchableOpacity>
+            </View>
+
 
         </View>
     )
 }
 const styles = StyleSheet.create({
-    numero: {
-        color: "#FFFFFF",
+    texto: {
+        color: "#23a954",
         textAlign: "left",
         fontSize: "20",
+        fontWeight: "bold",
         padding: 15
+
     },
     botaoSorteio: {
-        backgroundColor: "#14fa55",
+        backgroundColor: "#ff0000",
         height: 60,
+        width: 130,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 15,
         borderRadius: 5,
-        marginHorizontal: 80
+        marginRight: 5
     },
     botaoResultado: {
-        backgroundColor: "#ffbabe",
+        backgroundColor: "#23a954",
         height: 60,
+        width: 130,
         justifyContent: 'center',
         alignItems: 'center',
-        padding: 15,
         borderRadius: 5,
-        marginHorizontal: 80
+        marginLeft: 5
     },
     btnText: {
         color: '#fff',
@@ -73,5 +81,19 @@ const styles = StyleSheet.create({
     },
     container: {
         flex: 1,
+        backgroundColor: "#ffffff",
+        margin: 20,
+    },
+    botoes: {
+        flex: 1,
+        flexDirection: "row",
+        alignContent: "space-between",
+        margin: 10,
+        padding: 10,
+    },
+    numero: {
+        color: "#ff0000",
+        fontSize: 180,
+        textAlign: "center",
     }
 })

@@ -2,20 +2,16 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function Topo() {
-    return <View style={styles.fundo}>
-        <Text style={styles.texto}> Aplicativo de Bingo </Text>
+    return <View>
+        <Text style={styles.texto}> Bingo </Text>
     </View>
 }
 const styles = StyleSheet.create({
-    fundo: {
-        backgroundColor: "#e34040",
-        height: 50
-        
-    },
     texto: {
-        color: "#14fa55",
-        fontSize: "20",
-        lineHeight: "30",
-        textAlign: "center"
+        marginTop: 5,
+        color: "#23a954",
+        fontSize: "72",
+        textAlign: "center",
+        fontWeight:"bold"
     }
 })
