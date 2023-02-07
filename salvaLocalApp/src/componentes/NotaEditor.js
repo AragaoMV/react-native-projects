@@ -1,16 +1,27 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from "react-native"
 import { Picker } from '@react-native-picker/picker';
-import { addNota } from "../servicos/Notas";
+import { addNota, atualizaNota, deletaNota } from "../servicos/Notas";
 
-export default function NotaEditor({ mostraNotas }) {
+export default function NotaEditor({ mostraNotas, notaSelecionada, setNotaSelecionada }) {
+
+  useEffect(() => {
+    if (notaSelecionada.id) {
+      preencheModal()
+      setNotaParaAtualizar(true)
+      setModalVisivel(true)
+      return
+    }
+    setNotaParaAtualizar(false)
+  }, [notaSelecionada])
 
   const [titulo, setTitulo] = useState("")
   const [categoria, setCategoria] = useState("Pessoal")
   const [texto, setTexto] = useState("")
   const [modalVisivel, setModalVisivel] = useState(false)
+  const [notaParaAtualizar, setNotaParaAtualizar] = useState(false)
 
-  function salvaNota() {
+  async function salvaNota() {
     const umaNota = {
       titulo: titulo,
       categoria: categoria,
@@ -18,6 +29,37 @@ export default function NotaEditor({ mostraNotas }) {
     }
     await addNota(umaNota)
     mostraNotas()
+  }
+
+  async function attNota() {
+    const umaNota = {
+      titulo: titulo,
+      categoria: categoria,
+      texto: texto,
+      id: notaSelecionada.id
+    }
+    await atualizaNota(umaNota)
+    mostraNotas()
+  }
+
+  function preencheModal() {
+    setTitulo(notaSelecionada.titulo)
+    setCategoria(notaSelecionada.categoria)
+    setTexto(notaSelecionada.texto)
+  }
+
+  function limpaModal() {
+    setTitulo("")
+    setCategoria("Pessoal")
+    setTexto("")
+    setNotaSelecionada({})
+    setModalVisivel(false)
+  }
+
+  async function apagaNota(){
+    await deletaNota(notaSelecionada)
+    mostraNotas()
+    limpaModal()
   }
 
   return (
@@ -59,11 +101,15 @@ export default function NotaEditor({ mostraNotas }) {
                 value={texto} />
               <View style={estilos.modalBotoes}>
                 <TouchableOpacity style={estilos.modalBotaoSalvar}
-                  onPress={salvaNota}
-                >
+                  onPress={() => { notaParaAtualizar ? attNota() : salvaNota() }}>
                   <Text style={estilos.modalBotaoTexto}>Salvar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => { setModalVisivel(false) }}>
+                {notaParaAtualizar ?
+                  <TouchableOpacity style={estilos.modalBotaoDeletar} onPress={() => { apagaNota() }}>
+                    <Text style={estilos.modalBotaoTexto}>Deletar</Text>
+                  </TouchableOpacity> : <></>
+                }
+                <TouchableOpacity style={estilos.modalBotaoCancelar} onPress={() => { limpaModal() }}>
                   <Text style={estilos.modalBotaoTexto}>Cancelar</Text>
                 </TouchableOpacity>
               </View>
