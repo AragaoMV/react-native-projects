@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1678113157340" clover="3.2.0">
-  <project timestamp="1678113157340" name="All files">
-    <metrics statements="140" coveredstatements="46" conditionals="43" coveredconditionals="12" methods="42" coveredmethods="13" elements="225" coveredelements="71" complexity="0" loc="140" ncloc="140" packages="13" files="19" classes="19"/>
+<coverage generated="1678798371117" clover="3.2.0">
+  <project timestamp="1678798371117" name="All files">
+    <metrics statements="140" coveredstatements="53" conditionals="43" coveredconditionals="12" methods="42" coveredmethods="16" elements="225" coveredelements="81" complexity="0" loc="140" ncloc="140" packages="13" files="19" classes="19"/>
     <package name="teste-para-aplicacao">
       <metrics statements="2" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.js" path="D:\react-native (port)\teste-para-aplicacao\App.js">
@@ -25,7 +25,7 @@
       </file>
     </package>
     <package name="teste-para-aplicacao.src.hooks">
-      <metrics statements="29" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <metrics statements="29" coveredstatements="7" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="3"/>
       <file name="useLeilao.js" path="D:\react-native (port)\teste-para-aplicacao\src\hooks\useLeilao.js">
         <metrics statements="22" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="9" count="0" type="stmt"/>
@@ -52,14 +52,14 @@
         <line num="47" count="0" type="stmt"/>
       </file>
       <file name="useListaLeiloes.js" path="D:\react-native (port)\teste-para-aplicacao\src\hooks\useListaLeiloes.js">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
       </file>
     </package>
     <package name="teste-para-aplicacao.src.negocio.constantes">
@@ -149,7 +149,7 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="apiLeiloes.js" path="D:\react-native (port)\teste-para-aplicacao\src\servicos\apiLeiloes.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="4" count="2" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
       </file>
     </package>
     <package name="teste-para-aplicacao.src.telas.Leilao">
