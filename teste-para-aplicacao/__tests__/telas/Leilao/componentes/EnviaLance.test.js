@@ -1,18 +1,51 @@
 import React from "react";
-import { render } from "@testing-library/react-native";
+import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import EnviaLance from "../../../../src/telas/Leilao/componentes/EnviaLance";
-import { ENVIADO } from "../../../../src/negocio/constantes/estadosLance";
+import { ENVIADO, NAO_ENVIADO } from "../../../../src/negocio/constantes/estadosLance";
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
 
 describe('teals/Leilao/componentes/EnviaLance', () => {
-    it('deve enviar o lance  quando o botao for seleciionado', () => {
-        const enviaLance = jest.fn(() => new Promisse(resolve => resolve(ENVIADO)))
-        const { toJSON } = render(
+    it('deve enviar o lance  quando o botao for selecionado', async () => {
+        const enviaLance = jest.fn(() => new Promise(resolve => resolve(ENVIADO)))
+        const { getByPlaceholderText, getByA11yHint, getByText } = render(
             <EnviaLance
                 enviaLance={enviaLance}
                 cor="blue"
             />
         );
-        console.log(toJSON())
+        const input = getByPlaceholderText("R$");
+        const botao = getByA11yHint("Enviar Lance");
+
+        fireEvent.changeText(input, "10");
+        fireEvent.press(botao);
+
+        expect(enviaLance).toHaveBeenCalledWith("10");
+        await waitFor(() => {
+            expect(getByText(ENVIADO)).toBeTruthy();
+        });
+        expect(() => getByText(NAO_ENVIADO)).toThrow();
+    });
+    it('deve exibir o erro quando o lance não for enviado', async () => {
+        const enviaLance = jest.fn(() => new Promise(resolve => resolve(NAO_ENVIADO)))
+
+        const { getByPlaceholderText, getByA11yHint, getByText } = render(
+            <EnviaLance
+                enviaLance={enviaLance}
+                cor="blue"
+            />
+        );
+        const input = getByPlaceholderText("R$");
+        const botao = getByA11yHint("Enviar lance");
+
+        fireEvent.changeText(input, "10");
+        fireEvent.press(botao);
+
+        expect(enviaLance).toHaveBeenCalledWith("10");
+        await waitFor(() => {
+            expect(getByText(NAO_ENVIADO)).toBeTruthy();
+        });
+
+        expect(() => getByText(ENVIADO)).toThrow();
     });
 });
